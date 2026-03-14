@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 oogasawa
+ * Copyright 2025 scivicslab
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,12 @@
  * under the License.
  */
 
-package com.github.oogasawa.llmchat.service;
+package com.scivicslab.llmconsole.service;
 
-import com.github.oogasawa.llmchat.rest.ChatEvent;
-import com.github.oogasawa.llmchat.vllm.ChatMessage;
-import com.github.oogasawa.llmchat.vllm.ContextLengthExceededException;
-import com.github.oogasawa.llmchat.vllm.VllmClient;
+import com.scivicslab.llmconsole.rest.ChatEvent;
+import com.scivicslab.llmconsole.vllm.ChatMessage;
+import com.scivicslab.llmconsole.vllm.ContextLengthExceededException;
+import com.scivicslab.llmconsole.vllm.VllmClient;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
@@ -38,7 +38,7 @@ import java.util.logging.Logger;
  * <p>Each user has an isolated conversation history.
  * Per-user busy state prevents concurrent prompts for the same user.</p>
  *
- * @author oogasawa
+ * @author scivicslab
  */
 @ApplicationScoped
 public class ChatService {

@@ -1,4 +1,4 @@
-package com.github.oogasawa.llmchat.vllm;
+package com.scivicslab.llmconsole.vllm;
 
 /**
  * Thrown when the vLLM server rejects a request because the input exceeds

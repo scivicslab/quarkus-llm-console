@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 oogasawa
+ * Copyright 2025 scivicslab
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  * under the License.
  */
 
-package com.github.oogasawa.llmchat.rest;
+package com.scivicslab.llmconsole.rest;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -36,7 +36,7 @@ import java.util.List;
  *   <li>{@code log} - Server log entry (level, logger, message, timestamp)</li>
  * </ul>
  *
- * @author oogasawa
+ * @author scivicslab
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public record ChatEvent(

@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 oogasawa
+ * Copyright 2025 scivicslab
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  * under the License.
  */
 
-package com.github.oogasawa.llmchat.vllm;
+package com.scivicslab.llmconsole.vllm;
 
 import java.io.IOException;
 import java.net.URI;
@@ -36,7 +36,7 @@ import java.util.stream.Stream;
  * <p>POJO (no CDI annotations). Conversation history is managed externally
  * by the caller (ChatService), not by this client.</p>
  *
- * @author oogasawa
+ * @author scivicslab
  */
 public class VllmClient {
 

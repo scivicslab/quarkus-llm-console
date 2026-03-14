@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 oogasawa
+ * Copyright 2025 scivicslab
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  * under the License.
  */
 
-package com.github.oogasawa.llmchat.vllm;
+package com.scivicslab.llmconsole.vllm;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ import java.util.List;
  *
  * <p>Supports user and assistant text messages for simple chat interaction.</p>
  *
- * @author oogasawa
+ * @author scivicslab
  */
 public sealed interface ChatMessage {
 

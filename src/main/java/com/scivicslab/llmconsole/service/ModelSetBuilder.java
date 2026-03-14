@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 oogasawa
+ * Copyright 2025 scivicslab
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,9 @@
  * under the License.
  */
 
-package com.github.oogasawa.llmchat.service;
+package com.scivicslab.llmconsole.service;
 
-import com.github.oogasawa.llmchat.vllm.VllmClient;
+import com.scivicslab.llmconsole.vllm.VllmClient;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -25,7 +25,7 @@ import java.util.logging.Logger;
 /**
  * Factory that builds the {@link ModelSet} for local LLM deployment.
  *
- * @author oogasawa
+ * @author scivicslab
  */
 public class ModelSetBuilder {
 

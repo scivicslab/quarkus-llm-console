@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 oogasawa
+ * Copyright 2025 scivicslab
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,11 @@
  * under the License.
  */
 
-package com.github.oogasawa.llmchat.rest;
+package com.scivicslab.llmconsole.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.oogasawa.llmchat.service.ChatService;
-import com.github.oogasawa.llmchat.service.LogStreamHandler;
+import com.scivicslab.llmconsole.service.ChatService;
+import com.scivicslab.llmconsole.service.LogStreamHandler;
 import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpServerRequest;
 import io.vertx.core.http.HttpServerResponse;
@@ -62,7 +62,7 @@ import java.util.logging.Logger;
  *   <li>GET  /api/config - Get app configuration</li>
  * </ul>
  *
- * @author oogasawa
+ * @author scivicslab
  */
 @Path("/api")
 @Blocking
@@ -335,7 +335,7 @@ public class ChatResource {
         if (!url.startsWith("http://") && !url.startsWith("https://")) {
             return new FetchResult(false, "", "Invalid URL (must start with http:// or https://)");
         }
-        String content = com.github.oogasawa.llmchat.service.UrlFetcher.fetchAndExtract(url);
+        String content = com.scivicslab.llmconsole.service.UrlFetcher.fetchAndExtract(url);
         if (content.startsWith("[Error]")) {
             return new FetchResult(false, "", content);
         }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 oogasawa
+ * Copyright 2025 scivicslab
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  * under the License.
  */
 
-package com.github.oogasawa.llmchat.service;
+package com.scivicslab.llmconsole.service;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ import java.util.List;
  * and provides the list of available models for the UI dropdown, plus routing logic
  * to determine whether a model should be sent to a local LLM server or Claude CLI.</p>
  *
- * @author oogasawa
+ * @author scivicslab
  */
 public abstract class ModelSet {
 
