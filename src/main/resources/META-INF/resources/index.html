@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local LLM</title>
+    <link rel="stylesheet" href="styles.css?v=30">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div id="login-screen" style="display:flex;align-items:center;justify-content:center;height:100vh;">
+        <div style="display:flex;gap:60px;align-items:center;max-width:900px;width:90%;flex-wrap:wrap;justify-content:center;">
+            <form id="login-form" style="text-align:center;flex:0 0 auto;">
+                <h2 style="margin-bottom:16px;">Quarkus Local LLM</h2>
+                <input id="login-user" type="text" placeholder="Username" autocomplete="username"
+                       style="padding:8px 12px;font-size:16px;border-radius:4px;border:1px solid #555;background:#2a2a2a;color:#eee;width:220px;">
+                <br><br>
+                <button type="submit" style="padding:8px 24px;font-size:16px;border-radius:4px;cursor:pointer;">Login</button>
+            </form>
+            <div id="login-features" style="flex:1 1 340px;text-align:left;color:#bbb;font-size:14px;line-height:1.7;">
+                <h3 style="color:#eee;margin-bottom:12px;">Features</h3>
+                <ul style="list-style:disc;padding-left:20px;margin:0;">
+                    <li><strong>Prompt queue</strong> &mdash; queue up prompts while the AI is responding</li>
+                    <li><strong>Multiple LLM server support</strong> &mdash; connect to vLLM, Ollama, and other OpenAI-compatible servers simultaneously</li>
+                    <li><strong>URL fetch</strong> &mdash; paste URLs in your prompt, click the Fetch button, and the page content is automatically prepended as reference context</li>
+                    <li><strong>Image OCR</strong> &mdash; paste or drag-and-drop images into the prompt area; they are sent to vision-capable models for OCR and analysis</li>
+                    <li><strong>Smart context management</strong> &mdash; pre-trims conversation history and fetched content to fit within the model's context window</li>
+                    <li>Real-time streaming responses (SSE) with Markdown rendering</li>
+                    <li>Dynamic model list with refresh button</li>
+                    <li>Save conversation history as Markdown file</li>
+                    <li>Copy button on both user prompts and assistant responses</li>
+                    <li>10 color themes</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="app" style="display:none;">
+        <header>
+            <h1>Local LLM</h1>
+            <div id="status-bar">
+                <label id="theme-label">Theme:
+                    <select id="theme-select">
+                        <option value="dark-catppuccin">Dark Catppuccin</option>
+                        <option value="dark-nord">Dark Nord</option>
+                        <option value="dark-blue">Dark Blue</option>
+                        <option value="dark-green">Dark Green</option>
+                        <option value="dark-red">Dark Red</option>
+                        <option value="light-clean">Light Clean</option>
+                        <option value="light-warm">Light Warm</option>
+                        <option value="light-blue">Light Blue</option>
+                        <option value="light-green">Light Green</option>
+                        <option value="light-red">Light Red</option>
+                    </select>
+                </label>
+                <label id="think-label">
+                    <input type="checkbox" id="think-toggle">
+                    Think
+                </label>
+                <label id="model-label">Model:
+                    <select id="model-select">
+                        <!-- Populated dynamically from /api/models -->
+                    </select>
+                    <button id="refresh-models-btn" title="Refresh model list">&#x21bb;</button>
+                </label>
+                <span id="session-label"></span>
+                <span id="activity-label"></span>
+                <button id="save-chat-btn" title="Save conversation as Markdown">Save Chat</button>
+                <button id="clear-chat-btn" title="Clear chat display (session continues)">Clear</button>
+                <span id="user-label" style="font-size:13px;opacity:0.7;"></span>
+                <button id="logout-btn" title="Logout">Logout</button>
+                <span id="connection-status" class="disconnected">disconnected</span>
+            </div>
+        </header>
+
+        <main id="chat-area">
+            <!-- Messages will be appended here -->
+        </main>
+
+        <div id="queue-area" style="display:none"></div>
+
+        <footer>
+            <div id="input-area" style="position:relative">
+                <div id="predict-popup" style="display:none"></div>
+                <div id="image-preview-area"></div>
+                <textarea id="prompt-input" placeholder="Type a message... (Shift+Enter to send, Tab to predict, paste/drop images)" rows="5"></textarea>
+                <div id="buttons">
+                    <button id="image-btn" title="Attach image">&#x1F4CE;</button>
+                    <input type="file" id="image-file-input" accept="image/*" multiple style="display:none">
+                    <button id="send-btn" title="Send (Shift+Enter)">Send</button>
+                    <button id="cancel-btn" title="Cancel" disabled>Cancel</button>
+                    <button id="queue-btn" title="Add to queue">Queue</button>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="app.js?v=41"></script>
+</body>
+</html>
