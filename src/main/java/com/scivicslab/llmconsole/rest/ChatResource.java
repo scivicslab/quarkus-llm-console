@@ -321,6 +321,28 @@ public class ChatResource {
     }
 
     /**
+     * Returns conversation history for the current user.
+     * Used by fcitx5-predict-ja to harvest text for dictionary enrichment.
+     */
+    @GET
+    @Path("/history")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<HistoryResponse> history(
+            @QueryParam("user") String queryUser,
+            @QueryParam("limit") @jakarta.ws.rs.DefaultValue("50") int limit,
+            @Context HttpHeaders headers) {
+        String userId = resolveUserId(queryUser, headers);
+        if (userId == null) {
+            return List.of();
+        }
+        var history = chatService.getHistory(userId);
+        int start = Math.max(0, history.size() - limit);
+        return history.subList(start, history.size()).stream()
+                .map(msg -> new HistoryResponse(msg.role(), msg instanceof com.scivicslab.llmconsole.vllm.ChatMessage.User u ? u.content() : ((com.scivicslab.llmconsole.vllm.ChatMessage.Assistant) msg).content()))
+                .toList();
+    }
+
+    /**
      * Fetches a URL and returns its text content.
      */
     @POST
@@ -404,6 +426,8 @@ public class ChatResource {
     }
 
     // --- DTOs ---
+
+    public record HistoryResponse(String role, String content) {}
 
     public record AppConfig(String title, boolean singleUserMode) {}
 

@@ -277,7 +277,7 @@ public class ChatService {
     /**
      * Returns the conversation history for the given user (creates if absent).
      */
-    List<ChatMessage> getHistory(String userId) {
+    public List<ChatMessage> getHistory(String userId) {
         return userHistories.computeIfAbsent(userId,
                 k -> Collections.synchronizedList(new ArrayList<>()));
     }
