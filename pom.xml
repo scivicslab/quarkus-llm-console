@@ -47,6 +47,13 @@
       <version>1.18.3</version>
     </dependency>
 
+    <!-- POJO-actor (lightweight actor model) -->
+    <dependency>
+      <groupId>com.scivicslab</groupId>
+      <artifactId>pojo-actor</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+
     <!-- Test -->
     <dependency>
       <groupId>io.quarkus</groupId>
